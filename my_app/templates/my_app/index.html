@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for author in data %}
+    <h2>{{ author.name }}</h2>
+    {% for book in author.books.all %}
+            <ul>
+                <b>Книга</b><li> {{ book.title }} </li>
+                {% for x in  book.genre_set.all %}
+{#                <b>Жанр</b>: <span>{{ book.genre_set.all }}</span>#}
+                    <ol>
+                        <li>{{ x.title }}</li>
+                    </ol>
+
+                {% endfor %}
+            </ul>
+
+    {% endfor %}
+{% endfor %}
+
+{% for bio in data_of_bio %}
+    <h1>{{ bio.author.name }}---{{ bio.author.last_name }}</h1>
+    <p style="border:1px solid black;">{{ bio.description }}</p>
+{% endfor %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
